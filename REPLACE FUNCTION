@@ -1,0 +1,18 @@
+select replace('hello world','hello','hi');
+
+select replace('hello world', 'l', '7');
+
+select replace('hello world', 'o','0');
+
+select replace('hellO world','o','*');
+
+select replace('cheese bread milk',' ',' and ');
+
+select replace(title, 'e', '3') as all_e_converted_3 from books;
+
+-- substring and replace together
+
+select substring(
+    replace(title, 'e','3'),1,10
+)
+from books;

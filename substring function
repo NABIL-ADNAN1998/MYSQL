@@ -1,0 +1,17 @@
+select substring('hello world', 1, 4);
+
+//it starts from 3rd letter
+select substring('hello world', 3);
+
+//starts from oppositely third
+select substring('hello world', -3);
+
+//substring operation in column
+select substring(title, 1, 8) from books;
+
+//concat and substring altogether
+select concat(
+    substring(title,1,5),
+    '....'
+) as title 
+from books;

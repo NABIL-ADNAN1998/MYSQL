@@ -1,0 +1,12 @@
+select upper(title) from books;
+
+select lower(author_fname) from books;
+
+select 
+    concat(
+    'my favourite book is ',  
+    substring(
+        upper(title), 1, 8
+    )
+    ) 
+from books;

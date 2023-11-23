@@ -1,0 +1,8 @@
+
+
+select concat('nabil ','adnan');
+
+//THIS IS FROM BOOKSHOP DB
+select author_fname, author_lname, concat(author_fname,' ',author_lname, '!') from books
+
+where book_id <= 5;

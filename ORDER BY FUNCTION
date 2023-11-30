@@ -1,0 +1,25 @@
+
+// ascending order = asc,  descending order = desc....if dont write anything with order by it would be ascending by default
+
+
+select author_fname from books order by author_fname; // ascending order automatically
+
+select title from books order by title; // automatic ascending order
+
+select title from books order by title desc; // descending order 
+
+select released_year from books order by released_year; // automatic ascending order
+
+select released_year from books order by released_year desc; // descending order
+
+select title, book_id from books order by book_id ; // order by different column
+
+select title, book_id from books order by book_id desc; // order by different column
+
+select title from books order by book_id desc; // order by different column
+
+select title , author_fname, released_year from books order by released_year desc;
+
+select title , author_fname, released_year from books order by 3 desc;// 3 indicates released_year because released_year in 3rd no selection
+
+select title , author_fname, released_year from books order by 2 desc;// 2 indicates released_year because author_fname in 2nd no selection

@@ -23,3 +23,5 @@ select title , author_fname, released_year from books order by released_year des
 select title , author_fname, released_year from books order by 3 desc;// 3 indicates released_year because released_year in 3rd no selection
 
 select title , author_fname, released_year from books order by 2 desc;// 2 indicates released_year because author_fname in 2nd no selection
+
+select author_fname, author_lname from books order by author_lname, author_fname;// first asc order by first name then last name

@@ -1,0 +1,18 @@
+// how many output you want to see
+// limit 10, 10 means start from the 10th value and go 10 more step in front 
+// if we want to go to the last we should write limit 5, 12289632856891356; actually a gigantic number that put me to the last of the table 
+
+
+select title from books limit 10;
+
+select title from books limit 7;
+
+select * from books limit 5;
+
+select title, released_year from books order by released_year desc limit 10; // ordered desc by released year then output first 10 listing
+
+select title, released_year from books order by released_year desc limit 5,10; // starting and ending point
+
+select title from books limit 0, 3; // 0 is the starting
+
+select title from books limit 5, 1; // give me the title of 6th book. because start from 5 and go only 1 book in front

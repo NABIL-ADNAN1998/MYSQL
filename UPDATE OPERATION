@@ -1,0 +1,7 @@
+
+
+
+
+
+update books set stock_quantity=1200
+   where title = 'lincoln in the bardo' ;

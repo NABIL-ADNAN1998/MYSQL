@@ -1,0 +1,13 @@
+
+//  _ represents a number
+// % represents anything
+
+
+select title, stock_quantity from books where stock_quantity like  '__'; //any number that contains 4 number
+
+select title, stock_quantity from books where stock_quantity like  '___'; // any number that contains 3 number
+
+select title from books where title like '%\%%'; // \% is the % sign
+
+select title from books where title like '%\_%'; // \_ is the underscore
+

@@ -14,3 +14,10 @@ select author_fname, author_lname , count(*) from books group by author_lname;
 
 -- now i get books count of each unique author, distinct keyword use korar dorkar nai . * diyei kaj hoye jay 
 select author_fname, author_lname , count(*) from books group by distinct author_fname, author_lname;
+
+- group by released year
+select released_year, count(*) as 'count' from books group by released_year ;
+
+-- some fancy way
+select concat('In ', released_year, ' ', count(*), ' books released') from books group by released_year;
+

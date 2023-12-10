@@ -1,0 +1,31 @@
+
+-- min max function
+
+-- min
+select min(released_year) from books;
+
+select min(pages) from books;
+
+
+-- max 
+select max(pages) from books;
+
+select max(released_year) from books;
+
+select max(pages), title from books;
+
+
+select title from books where pages = (select max(pages) from books);
+
+select title from books where pages = (select min(pages) from books);
+
+--find the year that each author published their first book
+
+select author_fname, author_lname , min(released_year) from books group by author_fname, author_lname;
+
+--find the logest page count of each author
+
+select author_fname, author_lname, max(pages) from books group by author_fname, author_lname;
+
+-- clean version
+select concat(author_fname,' ',author_lname) as 'name', min(released_year) as 'first release' from books group by author_fname, author_lname; 

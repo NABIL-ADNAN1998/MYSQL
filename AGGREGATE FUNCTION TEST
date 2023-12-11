@@ -1,0 +1,18 @@
+-- number of books in database
+select count(title) from books;
+
+-- how many books were released in each year
+select released_year, count(*) from books group by released_year;
+
+-- total number of books in stock
+select sum(stock_quantity) as 'total books' from books;
+
+-- average released_year for each author
+select avg(released_year) from books group by author_fname, author_lname;
+
+-- find the full name of the author who wrote the longest book
+select concat(author_fname,' ',author_lname) from books where pages=(select max(pages) from books);
+
+
+-- special problem
+select released_year as 'year', count(*) as '# books', avg(pages) as 'average page' from books group by released_year;

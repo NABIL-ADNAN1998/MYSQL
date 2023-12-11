@@ -1,0 +1,12 @@
+--sum function
+
+select sum(pages) as 'total pages' from books;
+
+select sum(released_year) as 'total year' from books;
+
+-- sum all pages each author has writen
+
+select author_fname, author_lname, sum(pages) from books group by author_fname, author_lname;
+
+-- total pages written by jhumpa
+select author_fname, sum(pages) from books where author_fname='Jhumpa';

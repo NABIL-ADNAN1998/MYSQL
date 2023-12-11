@@ -1,0 +1,10 @@
+-- AVERAGE FUNCTION
+
+
+select avg(released_year) from books;
+
+-- average pages
+select avg(pages) from books;
+
+-- average stock quantity for books released in the same year
+select avg(stock_quantity) from books group by released_year;

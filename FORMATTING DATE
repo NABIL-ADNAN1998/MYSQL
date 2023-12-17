@@ -20,3 +20,5 @@ select names, monthname(birthdt) from people;
 select names, hour(birthdt) from people;
 
 select names, minute(birthdt) from people;
+
+select names, concat(monthname(birthdt),' ', day(birthdt),' ', year(birthdt)) as Birthday from people;

@@ -1,0 +1,16 @@
+
+-- DATE MATH
+-- we are using people table from datatypes database
+-- provide only difference of day not time 
+
+select datediff('1998-04-14 4:45:10', '1998-03-07');
+
+
+select names, birthdt, datediff(now(), birthdt) as difference from people;
+
+-- date add and sub
+
+select birthdt, birthdt + interval 1 month + interval 10 hour as 'after 1 month' from people;
+
+select birthdt, birthdt - interval 2 month month as 'subtract 2 month' from people;
+

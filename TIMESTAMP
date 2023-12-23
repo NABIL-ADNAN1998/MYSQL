@@ -1,0 +1,14 @@
+-- timestamps
+
+create table comments(
+
+        content varchar(100),
+        created_at timestamp default now()
+);
+
+
+-- ekhane kokhono kono value update korle timestamp o update hoye jabe 
+create table comments2(
+        content varchar(100),
+        changed_at timestamp default now() on update now();
+);

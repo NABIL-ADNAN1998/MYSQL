@@ -15,5 +15,6 @@ create table comments2(
         changed_at timestamp default now() on update now();
 );
 
+update comments2 set content = 'bandarban jabo' where content = 'cholo ghurte jai';
 
 

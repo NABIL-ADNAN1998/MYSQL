@@ -16,17 +16,4 @@ create table comments2(
 );
 
 
-select birthdt, date_add(birthdt, interval 1 month) from people;
 
-select birthdt, date_add(birthdt, interval 1 year) from people;
-
-select birthdt, datediff(now(), birthdt) from people;
-
-select birthdt, birthdt + interval 1 month from people;
-
-select birthdt, birthdt - interval 1 month from people;
-
-select birthdt, now() - interval 3 month from people;
-
--- eta vul . evabe kaj kore na . interval koto seta clearly janay dite hoy.. etar jonno datediff() function use korte hobe
-select now() - interval birthdt from people;

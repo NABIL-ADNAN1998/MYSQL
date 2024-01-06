@@ -1,34 +1,71 @@
-SELECT *
-FROM orders
-WHERE customer_id IN
+-- george er shob order dekhte chai
+
+select * from orders where customer_id = 
 (
-	SELECT id
-	FROM customers
-	WHERE first_name = 'boy'
-	AND last_name = 'george'	
+    select id from customers where last_name = 'george'
 );
 
--- implicit
-SELECT first_name, last_name, order_date, amount
-FROM customers, orders
-WHERE customers.id = orders.customer_id;
 
--- explicit
-SELECT first_name, last_name, order_date, amount
-FROM customers
-INNER JOIN orders
-ON customers.id = orders.customer_id;
+-- implicit inner joint (order korse oishob customer der details chai)
+select * 
+from 
+    customers, orders 
+where 
+    customers.id = orders.customer_id;
+
+select 
+    first_name, last_name, order_date, amount 
+from 
+    customers, orders 
+where 
+    orders.customer_id = customers.id;
+
+-- explicit inner joint(because I use join here)(jara order korse tader details)
+
+select 
+    email, order_date, amount 
+from 
+    customers 
+join 
+    orders 
+on 
+    customers.id = orders.customer_id;
 
 
-SELECT *
-FROM orders
-JOIN customers
-ON orders.customer_id = customers.id;
+-- make it complex
 
+select 
+    email, order_date, amount 
+from 
+    customers, orders 
+where 
+    orders.customer_id = customers.id 
+order by 
+    amount;
 
-SELECT first_name, last_name, SUM(amount) AS total_spent
-FROM customers
-JOIN orders
-	ON customers.id = orders.customer_id
-GROUP BY orders.customer_id
-ORDER BY total_spent DESC;
+-- amount dile sum() korte hobe and order_date er jonno max() use kora lagbe . Cause ekhane grouping hocche 
+-- column er age table er nam likha ta good practice
+select c
+    ustomers.first_name, customers.last_name, customers.email, sum(orders.amount) as total_spent, max(orders.order_date)
+from 
+    customers 
+join 
+    orders
+on 
+    customers.id = orders.customer_id 
+group by 
+    orders.customer_id
+order by 
+    total_spent;
+
+-- ek e kaj where diyeo kora jay. jehetu join use kortesi na tai eta implicit inner join. Implicit er theke explicit better
+select 
+    customers.first_name, customers.last_name, customers.email, sum(orders.amount) as total_spent, max(orders.order_date)
+from 
+    customers, orders
+where 
+    customers.id = orders.customer_id 
+group by 
+    orders.customer_id
+order by 
+    total_spent desc;

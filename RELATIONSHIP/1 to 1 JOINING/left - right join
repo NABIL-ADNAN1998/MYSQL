@@ -1,0 +1,57 @@
+-- left join. we get all from left table
+
+select 
+    first_name, last_name, order_date, amount 
+from 
+    customers 
+left join 
+    orders 
+on 
+    orders.customer_id = customers.id;
+
+
+
+
+-- left join and group by. max() ar sum() ue na korle group korte parbe na
+
+select 
+    first_name, last_name, max(order_date), sum(amount)
+from 
+    customers 
+left join 
+    orders 
+on 
+    orders.customer_id = customers.id
+group by
+    customers.id;
+
+
+
+
+-- we can replace null by 0
+
+select 
+    first_name, last_name, max(order_date), ifnull(sum(amount), 0) as total
+from 
+    customers 
+left join 
+    orders 
+on 
+    orders.customer_id = customers.id
+group by
+    customers.id
+order by
+    total desc;
+
+
+
+-- right join. Get all row from right table
+
+select 
+    first_name, last_name, max(order_date), ifnull(sum(amount), 0) as total
+from 
+    customers 
+right join 
+    orders 
+on 
+    orders.customer_id = customers.id;

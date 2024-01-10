@@ -1,0 +1,81 @@
+
+-- chanllenge 1
+select title, rating
+
+from series
+join reviews
+on  series.id=reviews.series_id ;
+
+-- challenge 2
+
+select title, avg(rating)
+from reviews
+join series
+on series.id = reviews.series_id
+group by series.id
+order by avg(rating) desc;
+
+-- challenge 3
+
+select f_name, l_name, rating from reviewer
+join reviews on reviewer.id = reviews.reviewer_id;
+
+-- challenge 4 (unreviewed series)
+
+select title, rating from series
+left join reviews on series.id = reviews.series_id
+where rating is null;
+
+
+-- challenge 5
+-- round function do rounding
+
+select genre, round(avg(rating),2) as avg_rating from series
+join reviews on series.id = reviews.series_id
+group by genre;
+
+
+-- challenge 6
+
+select  f_name, 
+        l_name, 
+        ifnull(count(rating), 0 ) as total_rate,
+        ifnull(min(rating),0) as min_rate, 
+        ifnull(max(rating),0) as max_rate, 
+        ifnull(round(avg(rating),2),0) as avrg,
+        case
+            when count(rating) > 0 then 'active'
+            else 'inactive'
+        end as status 
+from reviewer
+left join reviews 
+    on reviewer.id = reviews.reviewer_id
+group by f_name, l_name;
+
+-- use if()
+
+select  f_name, 
+        l_name, 
+        ifnull(count(rating), 0 ) as total_rate,
+        ifnull(min(rating),0) as min_rate, 
+        ifnull(max(rating),0) as max_rate, 
+        ifnull(round(avg(rating),2),0) as avrg,
+        if(count(rating) > 0, 'active', 'inactive') as 'status'
+
+from reviewer
+left join reviews 
+    on reviewer.id = reviews.reviewer_id
+group by f_name, l_name;
+
+
+
+-- challenge 7
+
+
+select  title, 
+        rating, 
+        concat(f_name, ' ', l_name) as 'name' 
+from series
+    join reviews on series.id = reviews.series_id
+    join reviewer on reviewer.id = reviews.reviewer_id;
+
